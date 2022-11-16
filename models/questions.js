@@ -5,6 +5,10 @@ const questionsSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    option0: {
+        type: String,
+        required: true,
+    },
     option1: {
         type: String,
         required: true,
@@ -13,13 +17,13 @@ const questionsSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    option3: {
-        type: String,
+    answer: {
+        type: Number,
         required: true,
     },
-    answer: {
-        type: String,
-        required: true,
+    createdAt: {
+        type: Date,
+        default: Date.now(),
     },
 });
 
