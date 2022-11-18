@@ -4,9 +4,7 @@ exports.postQuestion = async (req, res) => {
   try {
     const question = new Question({
       question: req.body.question,
-      option0: req.body.option0,
-      option1: req.body.option1,
-      option2: req.body.option2,
+      option: req.body.option, 
       answer: req.body.answer,
     });
     const q = await question.save();

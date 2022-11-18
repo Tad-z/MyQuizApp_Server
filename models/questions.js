@@ -5,18 +5,18 @@ const questionsSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    option0: {
-        type: String,
+    option: {
+        type: Array,
         required: true,
     },
-    option1: {
-        type: String,
-        required: true,
-    },
-    option2: {
-        type: String,
-        required: true,
-    },
+    // option1: {
+    //     type: String,
+    //     required: true,
+    // },
+    // option2: {
+    //     type: String,
+    //     required: true,
+    // },
     answer: {
         type: Number,
         required: true,
