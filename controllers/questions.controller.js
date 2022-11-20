@@ -33,14 +33,14 @@ exports.deleteAllQuestions = async (req, res) => {
   try {
     await Question.deleteMany({}).then((data) => {
       res.status(204).json({
-        message: `${data.deletedCount} Series were deleted successfully!`,
+        message: `${data.deletedCount} questions were deleted successfully!`,
       });
     });
   } catch (err) {
     console.log(err.message);
     res.status(400).json({
       message:
-        err.message || "Some error occurred while removing all Series.",
+        err.message || "Some error occurred while removing all questions.",
     });
   }
 }

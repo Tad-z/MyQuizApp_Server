@@ -38,3 +38,19 @@ exports.getAllResults = async (req, res) => {
     console.log(err.message);
   }
 };
+
+exports.deleteAllResults = async (req, res) => {
+  try {
+    await Result.deleteMany({}).then((data) => {
+      res.status(204).json({
+        message: `${data.deletedCount} results were deleted successfully!`,
+      });
+    });
+  } catch (err) {
+    console.log(err.message);
+    res.status(400).json({
+      message:
+        err.message || "Some error occurred while removing all results.",
+    });
+  }
+}
