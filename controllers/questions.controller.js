@@ -40,7 +40,7 @@ exports.deleteAllQuestions = async (req, res) => {
     console.log(err.message);
     res.status(400).json({
       message:
-        err.message || "Some error occurred while removing all questions.",
+        err.message || "Some error occurred while removing all questions.", 
     });
   }
 }
