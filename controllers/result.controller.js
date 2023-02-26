@@ -27,12 +27,13 @@ exports.postResult = async (req, res) => {
 exports.getAllResults = async (req, res) => {
   try {
     const results = await Result.find().exec();
-    if (!results.length) return res.json([]);
-    const count = results.length;
+    const sortedResults = await Result.find().sort({ points: -1 }).exec();
+    if (!sortedResults.length) return res.json([]);
+    const count = sortedResults.length;
     res.status(200).json({
       message: "Results retrieved successfully",
       count,
-      results,
+      results: sortedResults,
     });
   } catch (err) {
     console.log(err.message);
