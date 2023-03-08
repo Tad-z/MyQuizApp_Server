@@ -64,3 +64,24 @@ exports.deleteQuestion = async (req, res) => {
     res.send(err);
   }
 };
+
+exports.patchQuestion = async (req, res) => {
+  try {
+    if (Object.keys(req.body).length === 0) {
+      return res.status(400).json({
+        message: "Data to update can not be empty!",
+      });
+    }
+    const id = req.params.id;
+    await Question.findByIdAndUpdate(id, req.body).then((data) => {
+      if (!data) {
+        res.json({
+          message: `Cannot update question with id=${id}. Maybe Product was not found!`,
+        });
+      } else res.json({ message: "Question was updated successfully." });
+    });
+  } catch (err) {
+    console.log(err.message);
+    res.json("error");
+  }
+};
