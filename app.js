@@ -7,7 +7,7 @@ const resultRouter = require("./routes/results.routes")
 require("dotenv").config();
 
 app.use(cors({
-    origin: ["http://localhost:3000","https://quiz-app.onrender.com"]
+    origin: ["http://localhost:3000","https://quiz-app-t6ai.onrender.com"]
 }))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
