@@ -27,7 +27,7 @@ exports.postResult = async (req, res) => {
 exports.getAllResults = async (req, res) => {
   try {
     const results = await Result.find().exec();
-    const sortedResults = await Result.find().sort({ points: -1 }).exec();
+    const sortedResults = await Result.find().sort({ points: -1 }).limit(10).exec();
     if (!sortedResults.length) return res.json([]);
     const count = sortedResults.length;
     res.status(200).json({
