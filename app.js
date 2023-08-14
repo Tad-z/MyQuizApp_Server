@@ -16,8 +16,8 @@ app.use("/result", resultRouter);
 
 main()
     .then(() => {
+        app.listen(4000, () => {
+            console.log("Server started...");
+        })
         return console.log("DB connected...");
     }).catch(console.error);
-app.listen(4000, () => {
-    console.log("Server started...");
-})
