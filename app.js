@@ -16,7 +16,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/questions", questionsRouter);
 app.use("/result", resultRouter);
 
-// Schedule the cron job to make a request every 10 minutes to keep the API alive
+
+main()
+    .then(() => {
+        app.listen(5000, () => {
+            console.log("Server started...");
+        })
+        return console.log("DB connected...");
+    }).catch(console.error);
+
+    // Schedule the cron job to make a request every 10 minutes to keep the API alive
 cron.schedule('*/10 * * * *', async () => {
     try {
         // Make a GET request to a specific endpoint (e.g., /api/keep-alive)
@@ -27,12 +36,6 @@ cron.schedule('*/10 * * * *', async () => {
     } console.error('Keep-alive request error:', error);
 });
 
-main()
-    .then(() => {
-        app.listen(5000, () => {
-            console.log("Server started...");
-        })
-        return console.log("DB connected...");
-    }).catch(console.error);
+module.exports = app;
 
 
