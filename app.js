@@ -16,14 +16,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/questions", questionsRouter);
 app.use("/result", resultRouter);
 
-main()
-    .then(() => {
-        app.listen(5000, () => {
-            console.log("Server started...");
-        })
-        return console.log("DB connected...");
-    }).catch(console.error);
-
 // Schedule the cron job to make a request every 10 minutes to keep the API alive
 cron.schedule('*/10 * * * *', async () => {
     try {
@@ -34,3 +26,13 @@ cron.schedule('*/10 * * * *', async () => {
         console.error('Error:', error.message);
     } console.error('Keep-alive request error:', error);
 });
+
+main()
+    .then(() => {
+        app.listen(5000, () => {
+            console.log("Server started...");
+        })
+        return console.log("DB connected...");
+    }).catch(console.error);
+
+
