@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 const cors = require("cors")
-// const cron = require('node-cron');
-// const axios = require('axios')
+const cron = require('node-cron');
+const axios = require('axios')
 const main = require("./models/db.js");
 const questionsRouter = require("./routes/questions.routes")
 const resultRouter = require("./routes/results.routes")
