@@ -34,7 +34,7 @@ cron.schedule('*/14 * * * *', async () => {
     } catch (error) {
         console.error('Error:', error.message);
     } console.error('Keep-alive request error:', error);
-// });
+});
 
 module.exports = app;
 
