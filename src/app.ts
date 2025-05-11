@@ -11,7 +11,7 @@ dotenv.config();
 const app: Application = express();
 
 app.use(cors({
-    origin: ["http://localhost:3000", "https://quiz-app-t6ai.onrender.com"]
+    origin: ["http://localhost:3000", "https://quiz-app-t6ai.onrender.com", "https://quiz-app-five-ruddy-52.vercel.app/"]
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
