@@ -1,11 +1,20 @@
 import User from '../models/user';
 import { Request, Response } from 'express';
 
+function isValidEmail(email: string): boolean {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
 export const startQuiz = async (req: Request, res: Response) => {
   const { name, email } = req.body;
 
   if (!name || !email) {
     return res.status(400).json({ message: 'Name and email are required' });
+  }
+
+  if (!isValidEmail(email)) {
+    return res.status(400).json({ message: 'Invalid email format' });
   }
 
   try {
